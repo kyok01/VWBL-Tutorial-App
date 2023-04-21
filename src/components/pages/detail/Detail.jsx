@@ -19,9 +19,7 @@ export const Detail = () => {
       return;
     }
     try {
-      if (!vwbl.signature) {
-        await vwbl.sign();
-      }
+      await vwbl.sign();
       const decryptedNft = await vwbl.getTokenById(id);
       setDecryptedNft(decryptedNft);
     } catch (error) {

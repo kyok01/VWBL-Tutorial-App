@@ -31,10 +31,7 @@ export const Create = () => {
     }
     const { asset, thumbnail, title, description } = data;
     try {
-      if (!vwbl.signature) {
-        await vwbl.sign();
-        return;
-      }
+      await vwbl.sign();
       await vwbl.managedCreateTokenForIPFS(title, description, asset[0], thumbnail[0], 0);
 
       setIsLoading(false);
@@ -128,7 +125,7 @@ export const Create = () => {
           <FilePreviewer
             url={fileUrl}
             inputId="asset"
-            acceptType=".jpeg,.jpg,.png,.gif"
+            acceptType=".jpeg,.jpg,.png,.gif,.pdf"
             opt={{
               ...register('asset', {
                 required: 'Asset is required',
